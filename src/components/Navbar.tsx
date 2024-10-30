@@ -14,11 +14,9 @@ const NavBar: React.FC = () => {
   const { data: session } = useSession();
   const pathname = usePathname();
   const currentUser = session?.user?.email;
-  // const userWithRole = session?.user as { email: string; randomKey: string };
-  // const role = userWithRole?.randomKey;
   const menuStyle = { marginBottom: '0px' };
   const navbarClassName = currentUser ? 'bg-dark' : 'bg-light';
-  // const navbarVariant = currentUser ? 'dark' : 'light';
+
   return (
     <Navbar expand="lg" style={menuStyle} className={navbarClassName}>
       <Container>
@@ -79,6 +77,14 @@ const NavBar: React.FC = () => {
                     key="filter"
                   >
                     Filter
+                  </Nav.Link>,
+                  <Nav.Link
+                    id={ComponentIDs.feelingLuckyMenuItem}
+                    active={pathname === '/lucky'}
+                    href="/lucky"
+                    key="feelingLucky"
+                  >
+                    I’m feeling lucky!
                   </Nav.Link>,
                 ]
               : ''}
